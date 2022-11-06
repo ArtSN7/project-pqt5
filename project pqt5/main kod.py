@@ -53,7 +53,6 @@ class HomeW(QMainWindow, Ui_MainWindowHome):
 
         self.user_inf(1)
 
-
         self.pushButton_4.clicked.connect(self.move_back)
         self.pushButton_5.clicked.connect(self.user_inf(0))
 
