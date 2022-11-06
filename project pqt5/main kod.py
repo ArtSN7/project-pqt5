@@ -1,12 +1,11 @@
 import sys
 
-from PyQt5.QtCore import QDate
+from PyQt5.QtCore import QDateTime
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from start import Ui_MainWindowStart
 from home import Ui_MainWindowHome
 from info import Ui_MainWindowInfo
 import imges
-import datetime
 
 
 class WrongDate(Exception):
@@ -51,8 +50,13 @@ class HomeW(QMainWindow, Ui_MainWindowHome):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+
+        self.user_inf(1)
+
+
         self.pushButton_4.clicked.connect(self.move_back)
-        self.pushButton_5.clicked.connect(self.user_inf)
+        self.pushButton_5.clicked.connect(self.user_inf(0))
+
 
     def move_back(self):
         self.window = StartW()
@@ -61,10 +65,14 @@ class HomeW(QMainWindow, Ui_MainWindowHome):
 
     def sbor(self):
         spis = []
-        if self.dateEdit.date() <= QDate.currentDate():
+        firstDayText = self.dateEdit.dateTime().toString('yyyy-MM-dd')
+        firstDay = QDateTime.fromString(firstDayText, "yyyy-MM-dd")
+        now = QDateTime.currentDateTime()
+        numDay = now.daysTo(firstDay)
+        if numDay <= 0:
             raise WrongDate
         else:
-            spis.append(self.dateEdit.date())
+            spis.append(numDay)
         if int(self.lineEdit.text()) <= 0:
             raise WrongWage
         else:
@@ -73,17 +81,33 @@ class HomeW(QMainWindow, Ui_MainWindowHome):
             return spis
 
 
-    def user_inf(self):
-        try:
-            a = self.sbor()
-            data = a[0]
-            zarplata = a[1]
-        except WrongDate:
-            self.label_15.setText('Робот не доволен, ошибка в дате')
-        except WrongWage:
-            self.label_15.setText('Робот не доволен, ошибка в деньгах')
-        except ValueError:
-            self.label_15.setText('Робот не доволен, ошибка в вводе')
+    def user_inf(self, flag):
+        if flag == 0:
+            try:
+                a = self.sbor()
+                data = a[0]
+                zarplata = a[1]
+                self.label_11.setText(str(data))
+                self.label_9.setText(str(zarplata))
+            except WrongDate:
+                self.label_15.setText('Робот не доволен, ошибка в дате')
+            except WrongWage:
+                self.label_15.setText('Робот не доволен, ошибка в деньгах')
+            except ValueError:
+                self.label_15.setText('Робот не доволен, ошибка в вводе')
+        else:
+            firstDayText = self.dateEdit.dateTime().toString('yyyy-MM-dd')
+            firstDay = QDateTime.fromString(firstDayText, "yyyy-MM-dd")
+            now = QDateTime.currentDateTime()
+
+            if #в базе данных лежит "now" или "firstDay":
+                self.label_11.setText(str(0))
+                self.label_15.setText('Робот загрузил последние данные')
+                # очищаем 'label_9' и 'progressBar'
+            else:
+                #из базы данных берем день и считаем новую разницу, вставляем его в 'label_11' , также берем значение денег и обновляем 'progressBar'
+
+
 
 
 
