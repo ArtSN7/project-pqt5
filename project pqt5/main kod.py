@@ -1,5 +1,5 @@
 import sys
-
+import sqlite3
 from PyQt5.QtCore import QDateTime
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from start import Ui_MainWindowStart
@@ -51,10 +51,10 @@ class HomeW(QMainWindow, Ui_MainWindowHome):
         super().__init__()
         self.setupUi(self)
 
-        self.user_inf(1)
+        self.start_info()
 
         self.pushButton_4.clicked.connect(self.move_back)
-        self.pushButton_5.clicked.connect(self.user_inf(0))
+        self.pushButton_5.clicked.connect(self.user_inf)
 
 
     def move_back(self):
@@ -62,49 +62,55 @@ class HomeW(QMainWindow, Ui_MainWindowHome):
         self.window.show()
         self.close()
 
+    def start_info(self):
+
+
     def sbor(self):
         spis = []
-        firstDayText = self.dateEdit.dateTime().toString('yyyy-MM-dd')
-        firstDay = QDateTime.fromString(firstDayText, "yyyy-MM-dd")
+        self.firstDayText = self.dateEdit.dateTime().toString('yyyy-MM-dd')
+        self.firstDay = QDateTime.fromString(self.firstDayText, "yyyy-MM-dd")
         now = QDateTime.currentDateTime()
-        numDay = now.daysTo(firstDay)
+        numDay = now.daysTo(self.firstDay)
+
         if numDay <= 0:
             raise WrongDate
         else:
             spis.append(numDay)
-        if int(self.lineEdit.text()) <= 0:
-            raise WrongWage
-        else:
-            spis.append(self.lineEdit.text())
+            if int(self.lineEdit.text()) <= 0:
+                raise WrongWage
+            else:
+                spis.append(self.lineEdit.text())
         if len(spis) == 2:
             return spis
 
 
-    def user_inf(self, flag):
-        if flag == 0:
-            try:
-                a = self.sbor()
-                data = a[0]
-                zarplata = a[1]
-                self.label_11.setText(str(data))
-                self.label_9.setText(str(zarplata))
-            except WrongDate:
-                self.label_15.setText('Робот не доволен, ошибка в дате')
-            except WrongWage:
-                self.label_15.setText('Робот не доволен, ошибка в деньгах')
-            except ValueError:
-                self.label_15.setText('Робот не доволен, ошибка в вводе')
-        else:
-            firstDayText = self.dateEdit.dateTime().toString('yyyy-MM-dd')
-            firstDay = QDateTime.fromString(firstDayText, "yyyy-MM-dd")
-            now = QDateTime.currentDateTime()
+    def user_inf(self):
+        try:
+            a = self.sbor()
+            data = a[0]
+            zarplata = a[1]
+            self.label_11.setText(str(data))
+            self.label_9.setText(str(zarplata))
+            con = sqlite3.connect("basa.db")
+            cur = con.cursor()
 
-            if #в базе данных лежит "now" или "firstDay":
-                self.label_11.setText(str(0))
-                self.label_15.setText('Робот загрузил последние данные')
-                # очищаем 'label_9' и 'progressBar'
-            else:
-                #из базы данных берем день и считаем новую разницу, вставляем его в 'label_11' , также берем значение денег и обновляем 'progressBar'
+            cur.execute(f"""UPDATE user SET СуммаДенег = {zarplata}""")
+            cur.execute(f"""UPDATE user SET потрачено = {0}""")
+            cur.execute(f"""UPDATE user SET ДеньЗП = {self.firstDayText}""")
+
+            con.commit()
+            result = cur.execute("""SELECT * FROM user""").fetchall()
+            print(result)
+            cur.close()
+            con.close()
+
+        except WrongDate:
+            self.label_15.setText('Робот не доволен, ошибка в дате')
+        except WrongWage:
+            self.label_15.setText('Робот не доволен, ошибка в деньгах')
+        except ValueError:
+            self.label_15.setText('Робот не доволен, ошибка в вводе')
+
 
 
 
