@@ -1,6 +1,6 @@
 import sys
 import sqlite3
-from PyQt5.QtCore import QDateTime
+from PyQt5.QtCore import QDate
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from start import Ui_MainWindowStart
 from home import Ui_MainWindowHome
@@ -63,14 +63,61 @@ class HomeW(QMainWindow, Ui_MainWindowHome):
         self.close()
 
     def start_info(self):
+        con = sqlite3.connect("basa.db")
+        cur = con.cursor()
+        result = cur.execute("""SELECT * FROM user""").fetchall()[0]
+
+        cur.close()
+        con.close()
+
+        if len(str(result[4])) == 1:
+            a = f'0{result[4]}'
+        else:
+            a = f'{result[4]}'
+        if len(str(result[0])) == 1:
+            b = f'0{result[0]}'
+        else:
+            b = f'{result[0]}'
+
+        dayZP = "-".join([str(result[3]), a, b])
+        firstDay = QDate.fromString(dayZP, "yyyy-MM-dd")
+        a = QDate.currentDate().toString('yyyy-MM-dd')
+        now = QDate.fromString(a, "yyyy-MM-dd")
+
+
+        try:
+            if firstDay == now:
+                self.label_11.setText(str(0))
+                self.label_15.setText('Робот загрузил последние данные')
+                self.label_9.setText('0')
+                self.progressBar.setValue(0)
+            else:
+
+                numDay = now.daysTo(firstDay)
+                self.label_11.setText(str(numDay))
+
+                ostatok = result[1]
+                self.label_9.setText(str(ostatok))
+
+                self.progressBar.setValue(int(result[1] / result[2] * 100))
+
+                self.lineEdit.setText(str(result[2]))
+                self.dateEdit.setDate(firstDay)
+                self.label_15.setText('Робот загрузил последние данные')
+        except Exception:
+            self.label_11.setText(str(0))
+            self.label_15.setText('Робот загрузил последние данные')
+            self.label_9.setText('0')
+            self.progressBar.setValue(0)
+
 
 
     def sbor(self):
         spis = []
-        self.firstDayText = self.dateEdit.dateTime().toString('yyyy-MM-dd')
-        self.firstDay = QDateTime.fromString(self.firstDayText, "yyyy-MM-dd")
-        now = QDateTime.currentDateTime()
-        numDay = now.daysTo(self.firstDay)
+        firstDayText = self.dateEdit.date().toString('yyyy-MM-dd')
+        firstDay = QDate.fromString(firstDayText, "yyyy-MM-dd")
+        now = QDate.currentDate()
+        numDay = now.daysTo(firstDay)
 
         if numDay <= 0:
             raise WrongDate
@@ -80,7 +127,8 @@ class HomeW(QMainWindow, Ui_MainWindowHome):
                 raise WrongWage
             else:
                 spis.append(self.lineEdit.text())
-        if len(spis) == 2:
+                spis.append(firstDayText)
+        if len(spis) == 3:
             return spis
 
 
@@ -91,18 +139,24 @@ class HomeW(QMainWindow, Ui_MainWindowHome):
             zarplata = a[1]
             self.label_11.setText(str(data))
             self.label_9.setText(str(zarplata))
+            dayZP = str(a[2].split('-')[2])
+            monthZP = str(a[2].split('-')[1])
+            yearZP = str(a[2].split('-')[0])
+
             con = sqlite3.connect("basa.db")
             cur = con.cursor()
 
-            cur.execute(f"""UPDATE user SET СуммаДенег = {zarplata}""")
-            cur.execute(f"""UPDATE user SET потрачено = {0}""")
-            cur.execute(f"""UPDATE user SET ДеньЗП = {self.firstDayText}""")
+            cur.execute(f"""UPDATE user SET СуммаДенег = {int(zarplata)}""")
+            cur.execute(f"""UPDATE user SET потрачено = {1}""") # сделать функцию которая будет считать все траты
+            cur.execute(f"""UPDATE user SET ДеньЗП = {dayZP}""")
+            cur.execute(f"""UPDATE user SET ГодЗП = {yearZP}""")
+            cur.execute(f"""UPDATE user SET МесяцЗП = {monthZP}""")
 
             con.commit()
-            result = cur.execute("""SELECT * FROM user""").fetchall()
-            print(result)
             cur.close()
             con.close()
+
+            self.start_info()
 
         except WrongDate:
             self.label_15.setText('Робот не доволен, ошибка в дате')
