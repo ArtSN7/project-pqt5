@@ -2,9 +2,12 @@ import sys
 import sqlite3
 from PyQt5.QtCore import QDate
 from PyQt5.QtWidgets import QApplication, QMainWindow
+
 from start import Ui_MainWindowStart
 from home import Ui_MainWindowHome
 from info import Ui_MainWindowInfo
+import changing_bd
+import view_of_bd
 import imges
 
 
@@ -46,6 +49,18 @@ class StartW(QMainWindow, Ui_MainWindowStart):
         self.close()
 
 
+class ChangingW(QMainWindow, changing_bd.Ui_MainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+
+
+class ViewW(QMainWindow, view_of_bd.Ui_MainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+
+
 class HomeW(QMainWindow, Ui_MainWindowHome):
     def __init__(self):
         super().__init__()
@@ -56,9 +71,22 @@ class HomeW(QMainWindow, Ui_MainWindowHome):
         self.pushButton_4.clicked.connect(self.move_back)
         self.pushButton_5.clicked.connect(self.user_inf)
 
+        self.pushButton_2.clicked.connect(self.changing_bd_win)
+        self.pushButton_3.clicked.connect(self.view_of_bd_win)
+
 
     def move_back(self):
         self.window = StartW()
+        self.window.show()
+        self.close()
+
+    def changing_bd_win(self):
+        self.window = ChangingW()
+        self.window.show()
+        self.close()
+
+    def view_of_bd_win(self):
+        self.window = ViewW()
         self.window.show()
         self.close()
 
@@ -83,6 +111,9 @@ class HomeW(QMainWindow, Ui_MainWindowHome):
         firstDay = QDate.fromString(dayZP, "yyyy-MM-dd")
         a = QDate.currentDate().toString('yyyy-MM-dd')
         now = QDate.fromString(a, "yyyy-MM-dd")
+
+
+        #добавление в таблицы информации из бд
 
 
         try:
