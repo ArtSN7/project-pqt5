@@ -57,20 +57,50 @@ font: 75 36pt &quot;Segoe Print&quot;;</string>
       <rect>
        <x>30</x>
        <y>110</y>
-       <width>481</width>
+       <width>311</width>
        <height>361</height>
       </rect>
      </property>
+     <column>
+      <property name="text">
+       <string>Новый столбец</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Новый столбец</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Новый столбец</string>
+      </property>
+     </column>
     </widget>
     <widget class="QTableWidget" name="tableWidget_2">
      <property name="geometry">
       <rect>
        <x>580</x>
        <y>110</y>
-       <width>481</width>
+       <width>311</width>
        <height>361</height>
       </rect>
      </property>
+     <column>
+      <property name="text">
+       <string>Новый столбец</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Новый столбец</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Новый столбец</string>
+      </property>
+     </column>
     </widget>
     <widget class="QLabel" name="label_3">
      <property name="geometry">
