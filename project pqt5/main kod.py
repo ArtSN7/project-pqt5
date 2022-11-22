@@ -74,7 +74,7 @@ class HomeW(QMainWindow, Ui_MainWindowHome):
         self.pushButton_2.clicked.connect(self.changing_bd_win)
         self.pushButton_3.clicked.connect(self.view_of_bd_win)
 
-
+# переход на окна
     def move_back(self):
         self.window = StartW()
         self.window.show()
@@ -90,7 +90,7 @@ class HomeW(QMainWindow, Ui_MainWindowHome):
         self.window.show()
         self.close()
 
-    def start_info(self):
+    def start_info(self): # отображение информации на виджетах окна home
         con = sqlite3.connect("basa.db")
         cur = con.cursor()
         result = cur.execute("""SELECT * FROM user""").fetchall()[0]
@@ -113,7 +113,7 @@ class HomeW(QMainWindow, Ui_MainWindowHome):
         now = QDate.fromString(a, "yyyy-MM-dd")
 
 
-        #добавление в таблицы информации из бд
+        #добавление в таблицы информации из бд о покупках
 
 
         try:
@@ -122,6 +122,10 @@ class HomeW(QMainWindow, Ui_MainWindowHome):
                 self.label_15.setText('Робот загрузил последние данные')
                 self.label_9.setText('0')
                 self.progressBar.setValue(0)
+
+                con = sqlite3.connect("basa.db")
+                cur = con.cursor()
+                cur.execute(f"""UPDATE user SET потрачено = {0}""")
             else:
 
                 numDay = now.daysTo(firstDay)
@@ -143,14 +147,14 @@ class HomeW(QMainWindow, Ui_MainWindowHome):
 
 
 
-    def sbor(self):
+    def sbor(self): # собирает информацию из line_edits в графе (ваши данные)
         spis = []
         firstDayText = self.dateEdit.date().toString('yyyy-MM-dd')
         firstDay = QDate.fromString(firstDayText, "yyyy-MM-dd")
         now = QDate.currentDate()
         numDay = now.daysTo(firstDay)
 
-        if numDay <= 0:
+        if numDay < 0:
             raise WrongDate
         else:
             spis.append(numDay)
@@ -163,7 +167,7 @@ class HomeW(QMainWindow, Ui_MainWindowHome):
             return spis
 
 
-    def user_inf(self):
+    def user_inf(self): # обновление базы данных после нажатия кнопки в графе (ваши данные)
         try:
             a = self.sbor()
             data = a[0]
@@ -178,7 +182,9 @@ class HomeW(QMainWindow, Ui_MainWindowHome):
             cur = con.cursor()
 
             cur.execute(f"""UPDATE user SET СуммаДенег = {int(zarplata)}""")
-            cur.execute(f"""UPDATE user SET потрачено = {1}""") # сделать функцию которая будет считать все траты
+
+            # cur.execute(f"""UPDATE user SET потрачено = {1}""")
+
             cur.execute(f"""UPDATE user SET ДеньЗП = {dayZP}""")
             cur.execute(f"""UPDATE user SET ГодЗП = {yearZP}""")
             cur.execute(f"""UPDATE user SET МесяцЗП = {monthZP}""")
