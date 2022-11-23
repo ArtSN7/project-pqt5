@@ -1,7 +1,7 @@
 import sys
 import sqlite3
 from PyQt5.QtCore import QDate
-from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QLabel
+from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem
 
 from start import Ui_MainWindowStart
 from home import Ui_MainWindowHome
@@ -134,10 +134,141 @@ class StartW(QMainWindow, Ui_MainWindowStart):
         self.close()
 
 
-class ChangingW(QMainWindow, changing_bd.Ui_MainWindow): # сделать
+class ChangingW(QMainWindow, changing_bd.Ui_MainWindow): # сделать + сделать так чтобы при изменении считался остаток(потрачено)
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        self.label_21.setText("РОБОТ ЖДЕТ ВАШИХ УКАЗАНИЙ!")
+
+        self.pushButton_4.clicked.connect(self.move_back)
+        self.pushButton_3.clicked.connect(self.view_w)
+
+        self.pushButton.clicked.connect(self.add_pok)
+        self.pushButton_5.clicked.connect(self.del_pok)
+        self.pushButton_7.clicked.connect(self.red_pok)
+
+        self.pushButton_2.clicked.connect(self.add_want)
+        self.pushButton_6.clicked.connect(self.del_want)
+        self.pushButton_8.clicked.connect(self.red_want)
+
+        self.comboBox.activated.connect(self.handleActivated)
+        self.znach = 'название'
+
+        self.comboBox_2.activated.connect(self.handleActivated_2)
+        self.znach_2 = 'название'
+
+    def handleActivated(self, text):
+        self.znach = ['название', 'цена', 'магазин'][int(text)]
+
+    def handleActivated_2(self, text):
+        self.znach_2 = ['название', 'цена', 'магазин'][int(text)]
+
+    def add_pok(self):
+        try:
+            con = sqlite3.connect("basa.db")
+            cur = con.cursor()
+
+            iD = cur.execute("""SELECT * FROM buy""").fetchall()[::-1][0][0]
+
+            cur.execute("""INSERT INTO buy(id, название, цена, магазин) VALUES(?, ?, ?, ?)""",
+                        (int(iD) + 1, str(self.lineEdit.text()), int(self.lineEdit_2.text()), str(self.lineEdit_3.text())))
+            con.commit()
+            self.label_21.setText("  РОБОТ ВЫПОЛНИЛ ЗАДАЧУ")
+
+            cur.close()
+            con.close()
+        except Exception:
+            self.label_21.setText("ОШИБКА В ДАННЫХ, ПОВТОРИТЕ ПОПЫТКУ")
+
+    def del_pok(self):
+        try:
+            con = sqlite3.connect("basa.db")
+            cur = con.cursor()
+            cur.execute("""DELETE from buy where название = ?""", (self.lineEdit_7.text(),))
+            con.commit()
+            self.label_21.setText("  РОБОТ ВЫПОЛНИЛ ЗАДАЧУ")
+            cur.close()
+            con.close()
+        except Exception:
+            self.label_21.setText("ОШИБКА В ДАННЫХ, ПОВТОРИТЕ ПОПЫТКУ")
+
+    def red_pok(self):
+        try:
+            con = sqlite3.connect('basa.db')
+            cur = con.cursor()
+            if self.znach == 'цена':
+                cur.execute("""UPDATE buy SET цена = ? WHERE название = ?""", (int(self.lineEdit_10.text()), str(self.lineEdit_9.text())))
+            if self.znach == 'магазин':
+                cur.execute("""UPDATE buy SET магазин = ? WHERE название = ?""", (str(self.lineEdit_10.text()), str(self.lineEdit_9.text())))
+            if self.znach == 'название':
+                cur.execute("""UPDATE buy SET название = ? WHERE название = ?""", (str(self.lineEdit_10.text()), str(self.lineEdit_9.text())))
+            con.commit()
+            self.label_21.setText("  РОБОТ ВЫПОЛНИЛ ЗАДАЧУ")
+
+            cur.close()
+            con.close()
+        except Exception:
+            self.label_21.setText("ОШИБКА В ДАННЫХ, ПОВТОРИТЕ ПОПЫТКУ")
+
+    def add_want(self):
+        try:
+            con = sqlite3.connect("basa.db")
+            cur = con.cursor()
+
+            iD = cur.execute("""SELECT * FROM want""").fetchall()[::-1][0][0]
+
+            cur.execute("""INSERT INTO want(id, название, цена, магазин) VALUES(?, ?, ?, ?)""",
+                        (int(iD) + 1, str(self.lineEdit_4.text()), int(self.lineEdit_5.text()), str(self.lineEdit_6.text())))
+            con.commit()
+            self.label_21.setText("  РОБОТ ВЫПОЛНИЛ ЗАДАЧУ")
+
+            cur.close()
+            con.close()
+        except Exception:
+            self.label_21.setText("ОШИБКА В ДАННЫХ, ПОВТОРИТЕ ПОПЫТКУ")
+
+    def del_want(self):
+        try:
+            con = sqlite3.connect("basa.db")
+            cur = con.cursor()
+            cur.execute("""DELETE from want where название = ?""", (self.lineEdit_8.text(),))
+            con.commit()
+            self.label_21.setText("  РОБОТ ВЫПОЛНИЛ ЗАДАЧУ")
+            cur.close()
+            con.close()
+        except Exception:
+            self.label_21.setText("ОШИБКА В ДАННЫХ, ПОВТОРИТЕ ПОПЫТКУ")
+
+    def red_want(self):
+        try:
+            con = sqlite3.connect('basa.db')
+            cur = con.cursor()
+            if self.znach_2 == 'цена':
+                cur.execute("""UPDATE want SET цена = ? WHERE название = ?""",
+                            (int(self.lineEdit_11.text()), str(self.lineEdit_12.text())))
+            if self.znach_2 == 'магазин':
+                cur.execute("""UPDATE want SET магазин = ? WHERE название = ?""",
+                            (str(self.lineEdit_11.text()), str(self.lineEdit_12.text())))
+            if self.znach_2 == 'название':
+                cur.execute("""UPDATE want SET название = ? WHERE название = ?""",
+                            (str(self.lineEdit_11.text()), str(self.lineEdit_12.text())))
+            con.commit()
+            self.label_21.setText("  РОБОТ ВЫПОЛНИЛ ЗАДАЧУ")
+
+            cur.close()
+            con.close()
+        except Exception:
+            self.label_21.setText("ОШИБКА В ДАННЫХ, ПОВТОРИТЕ ПОПЫТКУ")
+
+    def move_back(self):
+        self.window = HomeW()
+        self.window.show()
+        self.close()
+
+    def view_w(self):
+        self.window = ViewW()
+        self.window.show()
+        self.close()
 
 
 class ViewW(QMainWindow, view_of_bd.Ui_MainWindow):
