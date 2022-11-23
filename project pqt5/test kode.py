@@ -1,5 +1,11 @@
-res = []
-for i in range(len(buy)):
-    if i != 0:
-        res.append(buy[i])
-res = (res[0], res[1], res[2])
+con = sqlite3.connect("basa.db")
+cur = con.cursor()
+result = cur.execute("""SELECT цена FROM buy""").fetchall()
+count = 0
+for i in result:
+    count += int(i[0])
+
+cur.execute("""UPDATE user SET потрачено = ?""", (count,))
+con.commit()
+cur.close()
+con.close()

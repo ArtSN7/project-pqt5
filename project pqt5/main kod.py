@@ -134,7 +134,7 @@ class StartW(QMainWindow, Ui_MainWindowStart):
         self.close()
 
 
-class ChangingW(QMainWindow, changing_bd.Ui_MainWindow): # сделать + сделать так чтобы при изменении считался остаток(потрачено)
+class ChangingW(QMainWindow, changing_bd.Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
@@ -169,14 +169,24 @@ class ChangingW(QMainWindow, changing_bd.Ui_MainWindow): # сделать + сд
             cur = con.cursor()
 
             iD = cur.execute("""SELECT * FROM buy""").fetchall()[::-1][0][0]
+            money = cur.execute("""SELECT * FROM user""").fetchall()[0]
+            summa = money[2]
+            spend = int(money[1]) + int(self.lineEdit_2.text())
+            if spend > summa:
+                cur.close()
+                con.close()
+                raise WrongWage
+            else:
+                cur.execute("""INSERT INTO buy(id, название, цена, магазин) VALUES(?, ?, ?, ?)""",
+                            (int(iD) + 1, str(self.lineEdit.text()), int(self.lineEdit_2.text()),
+                             str(self.lineEdit_3.text())))
+                con.commit()
+                self.label_21.setText("  РОБОТ ВЫПОЛНИЛ ЗАДАЧУ")
 
-            cur.execute("""INSERT INTO buy(id, название, цена, магазин) VALUES(?, ?, ?, ?)""",
-                        (int(iD) + 1, str(self.lineEdit.text()), int(self.lineEdit_2.text()), str(self.lineEdit_3.text())))
-            con.commit()
-            self.label_21.setText("  РОБОТ ВЫПОЛНИЛ ЗАДАЧУ")
-
-            cur.close()
-            con.close()
+                cur.close()
+                con.close()
+        except WrongWage:
+            self.label_21.setText("НЕДОСТАТОЧНО СРЕДСТВ")
         except Exception:
             self.label_21.setText("ОШИБКА В ДАННЫХ, ПОВТОРИТЕ ПОПЫТКУ")
 
@@ -197,7 +207,15 @@ class ChangingW(QMainWindow, changing_bd.Ui_MainWindow): # сделать + сд
             con = sqlite3.connect('basa.db')
             cur = con.cursor()
             if self.znach == 'цена':
-                cur.execute("""UPDATE buy SET цена = ? WHERE название = ?""", (int(self.lineEdit_10.text()), str(self.lineEdit_9.text())))
+                money = cur.execute("""SELECT * FROM user""").fetchall()[0]
+                summa = money[2]
+                spend = int(money[1]) + int(self.lineEdit_10.text())
+                if spend > summa:
+                    cur.close()
+                    con.close()
+                    raise WrongWage
+                else:
+                    cur.execute("""UPDATE buy SET цена = ? WHERE название = ?""", (int(self.lineEdit_10.text()), str(self.lineEdit_9.text())))
             if self.znach == 'магазин':
                 cur.execute("""UPDATE buy SET магазин = ? WHERE название = ?""", (str(self.lineEdit_10.text()), str(self.lineEdit_9.text())))
             if self.znach == 'название':
@@ -207,6 +225,8 @@ class ChangingW(QMainWindow, changing_bd.Ui_MainWindow): # сделать + сд
 
             cur.close()
             con.close()
+        except WrongWage:
+            self.label_21.setText("НЕДОСТАТОЧНО СРЕДСТВ")
         except Exception:
             self.label_21.setText("ОШИБКА В ДАННЫХ, ПОВТОРИТЕ ПОПЫТКУ")
 
@@ -399,6 +419,7 @@ class HomeW(QMainWindow, Ui_MainWindowHome):
         self.close()
 
     def start_info(self): # отображение информации на виджетах окна home
+        self.check_spend()
         con = sqlite3.connect("basa.db")
         cur = con.cursor()
         result = cur.execute("""SELECT * FROM user""").fetchall()[0]
@@ -479,7 +500,18 @@ class HomeW(QMainWindow, Ui_MainWindowHome):
             self.label_9.setText('0')
             self.progressBar.setValue(0)
 
+    def check_spend(self):
+        con = sqlite3.connect("basa.db")
+        cur = con.cursor()
+        result = cur.execute("""SELECT цена FROM buy""").fetchall()
+        count = 0
+        for i in result:
+            count += int(i[0])
 
+        cur.execute("""UPDATE user SET потрачено = ?""", (count,))
+        con.commit()
+        cur.close()
+        con.close()
 
     def sbor(self): # собирает информацию из line_edits в графе (ваши данные)
         spis = []
@@ -500,7 +532,6 @@ class HomeW(QMainWindow, Ui_MainWindowHome):
         if len(spis) == 3:
             return spis
 
-
     def user_inf(self): # обновление базы данных после нажатия кнопки в графе (ваши данные)
         try:
             a = self.sbor()
@@ -516,8 +547,6 @@ class HomeW(QMainWindow, Ui_MainWindowHome):
             cur = con.cursor()
 
             cur.execute(f"""UPDATE user SET СуммаДенег = {int(zarplata)}""")
-
-            # cur.execute(f"""UPDATE user SET потрачено = {1}""")
 
             cur.execute(f"""UPDATE user SET ДеньЗП = {dayZP}""")
             cur.execute(f"""UPDATE user SET ГодЗП = {yearZP}""")
