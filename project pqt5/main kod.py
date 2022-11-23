@@ -182,7 +182,7 @@ class ChangingW(QMainWindow, changing_bd.Ui_MainWindow):
             con = sqlite3.connect("basa.db")
             cur = con.cursor()
 
-            iD = cur.execute("""SELECT * FROM buy""").fetchall()[::-1][0][0]
+            iD = cur.execute("""SELECT * FROM buy""").fetchall()[::-1]
             money = cur.execute("""SELECT * FROM user""").fetchall()[0]
             summa = money[2]
             spend = int(money[1]) + int(self.lineEdit_2.text())
@@ -191,9 +191,14 @@ class ChangingW(QMainWindow, changing_bd.Ui_MainWindow):
                 con.close()
                 raise WrongWage
             else:
-                cur.execute("""INSERT INTO buy(id, название, цена, магазин) VALUES(?, ?, ?, ?)""",
-                            (int(iD) + 1, str(self.lineEdit.text()), int(self.lineEdit_2.text()),
-                             str(self.lineEdit_3.text())))
+                if len(iD) != 0:
+                    cur.execute("""INSERT INTO buy(id, название, цена, магазин) VALUES(?, ?, ?, ?)""",
+                                (int(iD[0][0]) + 1, str(self.lineEdit.text()), int(self.lineEdit_2.text()),
+                                 str(self.lineEdit_3.text())))
+                else:
+                    cur.execute("""INSERT INTO buy(id, название, цена, магазин) VALUES(?, ?, ?, ?)""",
+                                (1, str(self.lineEdit.text()), int(self.lineEdit_2.text()),
+                                 str(self.lineEdit_3.text())))
                 con.commit()
                 self.label_21.setText("  РОБОТ ВЫПОЛНИЛ ЗАДАЧУ")
                 self.check_spend()
@@ -204,6 +209,7 @@ class ChangingW(QMainWindow, changing_bd.Ui_MainWindow):
             self.label_21.setText("НЕДОСТАТОЧНО СРЕДСТВ")
         except Exception:
             self.label_21.setText("ОШИБКА В ДАННЫХ, ПОВТОРИТЕ ПОПЫТКУ")
+
 
     def del_pok(self):
         try:
@@ -252,10 +258,16 @@ class ChangingW(QMainWindow, changing_bd.Ui_MainWindow):
             con = sqlite3.connect("basa.db")
             cur = con.cursor()
 
-            iD = cur.execute("""SELECT * FROM want""").fetchall()[::-1][0][0]
+            iD = cur.execute("""SELECT * FROM want""").fetchall()[::-1]
 
-            cur.execute("""INSERT INTO want(id, название, цена, магазин) VALUES(?, ?, ?, ?)""",
-                        (int(iD) + 1, str(self.lineEdit_4.text()), int(self.lineEdit_5.text()), str(self.lineEdit_6.text())))
+            if len(iD) != 0:
+                cur.execute("""INSERT INTO want(id, название, цена, магазин) VALUES(?, ?, ?, ?)""",
+                            (int(iD[0][0]) + 1, str(self.lineEdit_4.text()), int(self.lineEdit_5.text()),
+                             str(self.lineEdit_6.text())))
+            else:
+                cur.execute("""INSERT INTO want(id, название, цена, магазин) VALUES(?, ?, ?, ?)""",
+                            (1, str(self.lineEdit_4.text()), int(self.lineEdit_5.text()),
+                             str(self.lineEdit_6.text())))
             con.commit()
             self.label_21.setText("  РОБОТ ВЫПОЛНИЛ ЗАДАЧУ")
 
