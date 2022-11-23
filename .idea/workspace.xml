@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="df20ef51-18ce-4dea-8f80-00f697f7266c" name="Changes" comment="final APPLICATION">
+      <change beforePath="$PROJECT_DIR$/changing_bd.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/changing_bd.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/choise.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/choise.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/choise2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/choise2.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/home.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/home.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imges.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/info.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/info.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project pqt5/basa.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project pqt5/main kod.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project pqt5/materials for the proj/Git-2.38.1-64-bit.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project pqt5/materials for the proj/cart.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project pqt5/materials for the proj/give-money.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project pqt5/materials for the proj/grey info.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project pqt5/materials for the proj/grey start.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project pqt5/materials for the proj/grey.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project pqt5/materials for the proj/home or down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project pqt5/materials for the proj/home or left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project pqt5/materials for the proj/home or main.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project pqt5/materials for the proj/home.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project pqt5/materials for the proj/homeback.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project pqt5/materials for the proj/info or.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project pqt5/materials for the proj/info.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project pqt5/materials for the proj/left-arrow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project pqt5/materials for the proj/money-bag.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project pqt5/materials for the proj/pink home.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project pqt5/materials for the proj/pink info.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project pqt5/materials for the proj/pink start.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project pqt5/materials for the proj/startluna.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project pqt5/materials for the proj/wishlist.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project pqt5/test kode.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/start.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/start.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view_of_bd.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view_of_bd.ui" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="showToolbar" value="false" />
+  </component>
+  <component name="ProjectId" id="2EcK2TXlSIAcCtZAfhe1SCkgaIw" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="ToolWindowProblems.ShowToolbar" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../project-pqt5-master" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\pythonProject3\pqt2- kamni" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.APPLICATION">
+    <configuration name="APPLICATION" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="pythonProject3" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/project_pqt5" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/project_pqt5/APPLICATION.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main kod" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="pythonProject3" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="D:\pythonLyceum\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/project pqt5" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/project pqt5/main kod.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="true" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="pythonProject3" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main_kod" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="pythonProject3" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/project_pqt5" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/project_pqt5/main_kod.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test kode (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="pythonProject3" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/project_pqt5" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/project_pqt5/test kode.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test kode" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="pythonProject3" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/project pqt5" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/project pqt5/test kode.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.main" />
+      <item itemvalue="Python.main kod" />
+      <item itemvalue="Python.main_kod" />
+      <item itemvalue="Python.test kode" />
+      <item itemvalue="Python.test kode (1)" />
+      <item itemvalue="Python.APPLICATION" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.APPLICATION" />
+        <item itemvalue="Python.test kode (1)" />
+        <item itemvalue="Python.main_kod" />
+        <item itemvalue="Python.main kod" />
+        <item itemvalue="Python.test kode" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="df20ef51-18ce-4dea-8f80-00f697f7266c" name="Changes" comment="" />
+      <created>1662889224983</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1662889224983</updated>
+    </task>
+    <task id="LOCAL-00001" summary="main kod">
+      <created>1667666216813</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1667666216813</updated>
+    </task>
+    <task id="LOCAL-00002" summary="main kod">
+      <created>1667720322208</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1667720322208</updated>
+    </task>
+    <task id="LOCAL-00003" summary="main kod">
+      <created>1667726407531</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1667726407531</updated>
+    </task>
+    <task id="LOCAL-00004" summary="main kod">
+      <created>1667726483405</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1667726483405</updated>
+    </task>
+    <task id="LOCAL-00005" summary="main kod">
+      <created>1669046412112</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1669046412112</updated>
+    </task>
+    <task id="LOCAL-00006" summary="main kod">
+      <created>1669055180042</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1669055180042</updated>
+    </task>
+    <task id="LOCAL-00007" summary="main kod">
+      <created>1669055337268</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1669055337268</updated>
+    </task>
+    <task id="LOCAL-00008" summary="main kod">
+      <created>1669055447540</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1669055447540</updated>
+    </task>
+    <task id="LOCAL-00009" summary="main kod">
+      <created>1669102707753</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1669102707753</updated>
+    </task>
+    <task id="LOCAL-00010" summary="main kod">
+      <created>1669104518287</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1669104518287</updated>
+    </task>
+    <task id="LOCAL-00011" summary="main kod">
+      <created>1669138242188</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1669138242188</updated>
+    </task>
+    <task id="LOCAL-00012" summary="main kod">
+      <created>1669203717667</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1669203717667</updated>
+    </task>
+    <task id="LOCAL-00013" summary="main kod">
+      <created>1669206678284</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1669206678284</updated>
+    </task>
+    <task id="LOCAL-00014" summary="main kod">
+      <created>1669207706160</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1669207706160</updated>
+    </task>
+    <task id="LOCAL-00015" summary="main kod">
+      <created>1669208997097</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1669208997097</updated>
+    </task>
+    <task id="LOCAL-00016" summary="main kod">
+      <created>1669210608729</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1669210608729</updated>
+    </task>
+    <task id="LOCAL-00017" summary="final APPLICATION">
+      <created>1669218542092</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1669218542092</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="main kod" />
+    <MESSAGE value="final APPLICATION" />
+    <option name="LAST_COMMIT_MESSAGE" value="final APPLICATION" />
+  </component>
+</project>
