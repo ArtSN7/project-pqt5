@@ -104,6 +104,7 @@ class ChoiseWantW(QMainWindow, choise.Ui_MainWindow):
         except Exception:
             self.lineEdit.setText("ОШИБКА В ДАННЫХ, TRY AGAIN")
 
+
 class InfoW(QMainWindow, Ui_MainWindowInfo):
     def __init__(self):
         super().__init__()
@@ -157,6 +158,19 @@ class ChangingW(QMainWindow, changing_bd.Ui_MainWindow):
         self.comboBox_2.activated.connect(self.handleActivated_2)
         self.znach_2 = 'название'
 
+    def check_spend(self):
+        con = sqlite3.connect("basa.db")
+        cur = con.cursor()
+        result = cur.execute("""SELECT цена FROM buy""").fetchall()
+        count = 0
+        for i in result:
+            count += int(i[0])
+
+        cur.execute("""UPDATE user SET потрачено = ?""", (count,))
+        con.commit()
+        cur.close()
+        con.close()
+
     def handleActivated(self, text):
         self.znach = ['название', 'цена', 'магазин'][int(text)]
 
@@ -182,6 +196,7 @@ class ChangingW(QMainWindow, changing_bd.Ui_MainWindow):
                              str(self.lineEdit_3.text())))
                 con.commit()
                 self.label_21.setText("  РОБОТ ВЫПОЛНИЛ ЗАДАЧУ")
+                self.check_spend()
 
                 cur.close()
                 con.close()
@@ -197,6 +212,7 @@ class ChangingW(QMainWindow, changing_bd.Ui_MainWindow):
             cur.execute("""DELETE from buy where название = ?""", (self.lineEdit_7.text(),))
             con.commit()
             self.label_21.setText("  РОБОТ ВЫПОЛНИЛ ЗАДАЧУ")
+            self.check_spend()
             cur.close()
             con.close()
         except Exception:
@@ -222,6 +238,7 @@ class ChangingW(QMainWindow, changing_bd.Ui_MainWindow):
                 cur.execute("""UPDATE buy SET название = ? WHERE название = ?""", (str(self.lineEdit_10.text()), str(self.lineEdit_9.text())))
             con.commit()
             self.label_21.setText("  РОБОТ ВЫПОЛНИЛ ЗАДАЧУ")
+            self.check_spend()
 
             cur.close()
             con.close()
@@ -307,7 +324,6 @@ class ViewW(QMainWindow, view_of_bd.Ui_MainWindow):
         self.pushButton_5.clicked.connect(self.poisk_v_want)
         self.pushButton.clicked.connect(self.poisk_v_pok)
 
-
     def make_tabl_pok(self, res):
         self.tableWidget.setColumnCount(3)
         self.tableWidget.setRowCount(0)
@@ -331,7 +347,6 @@ class ViewW(QMainWindow, view_of_bd.Ui_MainWindow):
             for j, elem in enumerate(row):
                 self.tableWidget_2.setItem(
                     i, j, QTableWidgetItem(str(elem)))
-
 
     def poisk_v_pok(self):
         self.window = ChoisePokW()
@@ -486,7 +501,7 @@ class HomeW(QMainWindow, Ui_MainWindowHome):
                 numDay = now.daysTo(firstDay)
                 self.label_11.setText(str(numDay))
 
-                ostatok = result[1]
+                ostatok = int(result[2]) - int(result[1])
                 self.label_9.setText(str(ostatok))
 
                 self.progressBar.setValue(int(result[1] / result[2] * 100))
