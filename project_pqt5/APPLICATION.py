@@ -776,7 +776,7 @@ class Ui_MainWindowChanging(object):
         self.label_21 = QtWidgets.QLabel(self.widget)
         self.label_21.setGeometry(QtCore.QRect(290, 540, 311, 41))
         self.label_21.setStyleSheet("background-color: rgb(255, 255, 255);\n"
-"font: 63 14pt \"Arialpip\";")
+"font: 63 14pt \"Arial\";")
         self.label_21.setObjectName("label_21")
         self.widget_3 = QtWidgets.QWidget(self.centralwidget)
         self.widget_3.setGeometry(QtCore.QRect(10, 760, 1181, 241))
@@ -784,11 +784,11 @@ class Ui_MainWindowChanging(object):
         self.widget_3.setObjectName("widget_3")
         self.label_15 = QtWidgets.QLabel(self.widget_3)
         self.label_15.setGeometry(QtCore.QRect(680, 60, 491, 71))
-        self.label_15.setStyleSheet("font: 12pt \"MS Shell Dlg 2\";")
+        self.label_15.setStyleSheet("font: 12pt \"Arial\";")
         self.label_15.setObjectName("label_15")
         self.label = QtWidgets.QLabel(self.widget_3)
         self.label.setGeometry(QtCore.QRect(10, 10, 121, 16))
-        self.label.setStyleSheet("font: 75 12pt \"System\";")
+        self.label.setStyleSheet("font: 75 12pt \"Arial\";")
         self.label.setObjectName("label")
         self.textBrowser = QtWidgets.QTextBrowser(self.widget_3)
         self.textBrowser.setGeometry(QtCore.QRect(50, 50, 421, 71))
@@ -845,7 +845,7 @@ class Ui_MainWindowChanging(object):
         self.textBrowser.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"</style></head><body style=\" font-family:\'Arial\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; font-style:italic;\">Тут Вы можеет редактировать информацию из 2 баз данных: желания и совершенные покупки. Вам доступно удаление, добавление и редактирование.</span></p></body></html>"))
 
 
